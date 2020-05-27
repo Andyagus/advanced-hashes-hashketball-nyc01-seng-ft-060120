@@ -606,21 +606,22 @@ def team_names
   end
 end
 
-def player_numbers(input)
-  output = []
+def player_numbers (team_name)
+  numbers = []
   game_hash.each do |team, team_info|
-    if team_info[:team_name] == input 
-      team_info.each do |key, value|
-        if key == :players
-          value.each do |player|
-          output.push(player[:number])
+    if team_info[:team_name] == team_name
+      team_info.each do |info, details|
+        if info == :players
+          details.each do |player|
+            numbers.push(player[:number])
           end
         end
       end
     end
   end
-  return output
+  return numbers
 end
+
 
 def player_stats(player_name)
   game_hash.each do |team, team_info|
