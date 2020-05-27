@@ -623,19 +623,15 @@ def player_numbers(input)
 end
 
 def player_stats(player_name)
-  player_stats = {}
-  game_hash.each do |team, team_details_hash|
-    team_details_hash[:players].each do |stats|
-
-      if stats[:name] == player_name
-        stats.delete(:name)
-        player_stats = stats
-      end
-    end
+  game_hash.each do |team, team_info|
+    team_info[:players].each do |player_hash|
+    if player_hash[:player_name] == player_name
+      return player_hash
   end
-  return player_stats
+  end
 end
-
+  return player_hash
+end
 def big_shoe_rebounds
   big_shoe = 0
   rebounds = 0
